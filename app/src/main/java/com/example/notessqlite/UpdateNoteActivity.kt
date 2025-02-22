@@ -1,6 +1,7 @@
 package com.example.notessqlite
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,11 +17,15 @@ class UpdateNoteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding = ActivityUpdateNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         db = NotesDatabaseHelper(this)
 
+
         noteId = intent.getIntExtra("note_id", -1)
+
         if (noteId == -1) {
             finish()
             return
